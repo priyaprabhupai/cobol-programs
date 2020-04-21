@@ -1,0 +1,157 @@
+1)write a  cobol program that compares three variables and print the 
+desired output
+
+     IDENTIFICATION DIVISION.                                
+     PROGRAM-ID. COB001.                                     
+     ENVIRONMENT DIVISION.                                    
+     DATA DIVISION.                                              
+     WORKING-STORAGE SECTION. 
+       01 A PIC 9(2).
+       01 B PIC 9(2).
+       01 C PIC 9(2).
+     PROCEDURE DIVISION.
+         ACCEPT A.
+         ACCEPT B.
+         ACCEPT C.
+     IF(A=B=C) THEN
+      DISPLAY 'ALL ARE EQUAL'
+     ELSE
+       IF(A AND B > C) THEN
+       DISPLAY 'A AND B ARE BIGGER'
+     ELSE
+       IF(A AND C >B) THEN
+       DISPLAY 'A AND C ARE BIGGER'
+     ELSE 
+        IF(B AND C >A) THEN
+        DISPLAY 'B AND C ARE BIGGER'
+     ELSE
+        IF(A>B AND A>C) THEN
+        DISPLAY 'A IS BIGGER'
+     ELSE 
+        IF(B>A AND B>C) THEN
+        DISPLAY 'B IS BIGGER'
+     ELSE 
+        IF(C>A AND C>B) THEN
+        DISPLAY 'C IS BIGGER'
+      END-IF
+      END-IF
+      END-IF
+      END-IF
+      END-IF
+      END-IF
+      END-IF.
+     STOP RUN.
+
+   JCL
+SYSIN DD*
+23
+23
+23
+
+24
+25
+21
+
+25
+20
+24
+
+26
+28
+56
+
+87
+54
+43
+
+53
+92
+34
+
+54
+53
+87
+/*
+
+
+2)WRITE A COBOL PROGRAM THAT ACCEPTS NAMES IN A TABLE
+
+
+
+     IDENTIFICATION DIVISION.                                
+     PROGRAM-ID. COB002.                                     
+     ENVIRONMENT DIVISION.                                    
+     DATA DIVISION.
+     01 TABLE-NAME
+          05 WS-NAMES OCCURS 3 TIMES.
+             10 WS-1NAME PIC A(10).
+             10 WS-2NAME PIC A(10).
+             10 WS-3NAME PIC X(10).
+          05 WS-NAME.
+     PROCEDURE DIVISON.
+       ACCEPT TABLE-NAME.
+       INSPECT TABLE-NAME FOR LEADING 'A'.
+       MOVE FUNCTION LOWER-CASE(WS-NAMES) TO WS-NAME
+       PERFORM VARYING SUB-1 FROM 1 BY 1
+       UNTIL SUB-1>FUNCTION LENGTH(WS-NAME)
+       MOVE FUNCTION UPPER-CASE(WS-NAME(SUB-1:1)) TO WS-NAME
+       DISPLAY WS-NAME.
+       END-PERFORM.
+         
+
+JCL
+SYSIN DD *
+PREETHIIII
+ARADYAYYYY
+PRANALIIII
+/*
+
+     
+     
+3)  
+     IDENTIFICATION DIVISION.                                
+     PROGRAM-ID. COB003.                                     
+     ENVIRONMENT DIVISION.                                    
+     DATA DIVISION.
+     WORKING-STORAGE SECTION.
+       01 WEEK.
+         05 WEEK1 PIC X(3).
+          88 FIRST VALUE 'SUN'.
+          88 SECND VALUE 'MON'.
+          88 THREE VALUE 'TUE'.
+          88 FOUR VALUE 'WED'.
+          88 FIVE VALUE 'THU'.
+          88 SIX VALUE 'FRI'.
+          88 SEVEN VALUE 'SAT'.
+     PROCEDURE DIVISION.
+         ACCEPT WEEK1
+         EVALUATE WEEK1
+         WHEN 'SUN' AND 'SAT'
+           DISPLAY 'HOLIDAY'
+          WHEN OTHER
+            DISPLAY 'WORKING DAY'
+         END-EVALUATE.
+    STOP RUN.
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             

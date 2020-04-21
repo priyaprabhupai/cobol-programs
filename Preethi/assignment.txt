@@ -1,0 +1,116 @@
+1)cobol prgrm to find the prime numbers between a given range
+
+
+ IDENTIFICATION DIVISION.
+       PROGRAM-ID. PRIME.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+
+       WORKING-STORAGE SECTION.
+       01 M PIC 9(3).
+       01 N PIC 999.
+       01 FLAG PIC 9(2).
+       01 REM PIC 9(2).
+       01 RES PIC 9(3).
+       01 I PIC 9(3).
+       01 J PIC 999.
+       PROCEDURE DIVISION.
+       AC-PARA.
+           ACCEPT M.
+           ACCEPT N.
+           IF (M > N)
+                DISPLAY "INVALID RANGE!..."
+                GO TO AC-PARA.
+       P1.  
+           DISPLAY " PRIME NUMBERS BETWEEN " , M , " AND " , N , " ARE ".
+           IF M < 2  COMPUTE M = 2.
+           PERFORM P2 VARYING I FROM M BY 1 UNTIL I > N.
+           STOP RUN.                                                  
+       P2.
+           MOVE 0 TO FLAG.
+           PERFORM P3 VARYING J FROM 2 BY 1 UNTIL J > I - 1.
+           IF FLAG = 0  DISPLAY J.
+         
+       P3.
+           DIVIDE I BY J GIVING RES REMAINDER REM.
+           IF REM = 0 MOVE I TO FLAG.
+
+JCL
+SYSIN DD*
+005
+070
+/*
+
+
+
+2)sum of even and odd
+
+
+ IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. COB001.                                              
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 WS-TABLE.                                                     
+           05 WS-NUM PIC 9(8) OCCURS 5 TIMES INDEXED BY IND.            
+       01 ODD PIC 9(8) VALUE 0.                                         
+       01 EVEN PIC 9(8) VALUE 0.                                        
+       01 Q PIC 9(8).                                                   
+       01 Q1 PIC 9(8).                                                  
+       01 R PIC 9(8).                                                   
+       01 R1 PIC 9(8).                                                  
+       01 A PIC 9(8).                                            
+       01 I PIC 9(2) VALUE 0.                                           
+       PROCEDURE DIVISION.                                              
+       MAIN-PARA.                                                      
+           PERFORM A-PARA VARYING I FROM 1 BY 1 UNTIL I > 5             
+           STOP RUN.                                                    
+       A-PARA.                                                          
+           SET IND TO 1                                                 
+           ACCEPT WS-NUM(IND)                                           
+           PERFORM PARA UNTIL WS-NUM(IND) EQUAL TO 0                   
+           DISPLAY 'SUM OF EVEN DIGITS: ' EVEN                         
+           DISPLAY 'SUM OF ODD DIGITS: ' ODD                            
+           MOVE 0 TO EVEN                                               
+           MOVE 0 TO ODD                                               
+           SET IND UP BY 1.                                             
+       PARA.                                                            
+           DIVIDE WS-NUM(IND) BY 10 GIVING Q REMAINDER R                
+           MOVE Q TO WS-NUM(IND)                                       
+           DIVIDE R BY 2 GIVING Q1 REMAINDER R1                         
+           IF R1 IS EQUAL TO 0                                          
+           COMPUTE EVEN = EVEN + R                                      
+           ELSE                                                         
+           COMPUTE ODD = ODD + R                                        
+           END-IF.                                                      
+
+
+3)vowel
+
+
+    IDENTIFICATION DIVISION.
+       PROGRAM-ID. VOWELS.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 STR1 PIC X(26).
+       01 CNTR PIC 99 VALUE 0.
+       PROCEDURE DIVISION.
+       MAIN-PARA.
+            ACCEPT STR1.
+            PERFORM A100-PARA.
+            STOP RUN.
+       A100-PARA.
+           INSPECT STR1 TALLYING CNTR FOR ALL ' A ' , ' a ' , ' E '
+           , ' e ' , ' I ' , ' i ' , ' O ' , ' o ' , ' U ' , ' u ' .
+           DISPLAY 'STRING : ' STR1 .
+           DISPLAY 'VOWELS cnt: ' CNTR.
+
+
+
+
+
+
+
+
+
