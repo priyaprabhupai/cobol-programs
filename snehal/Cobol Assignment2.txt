@@ -1,0 +1,147 @@
+1)write a  cobol program that compares three variables and print the 
+desired output
+
+     IDENTIFICATION DIVISION.                                
+     PROGRAM-ID. COB001.                                     
+     ENVIRONMENT DIVISION.                                    
+     DATA DIVISION.                                              
+     WORKING-STORAGE SECTION. 
+       01 A PIC 9(2).
+       01 B PIC 9(2).
+       01 C PIC 9(2).
+     PROCEDURE DIVISION.
+         ACCEPT A.
+         ACCEPT B.
+         ACCEPT C.
+     IF(A=B=C) THEN
+      DISPLAY 'ALL ARE EQUAL'
+     ELSE
+       IF(A AND B > C) THEN
+       DISPLAY 'A AND B ARE BIGGER'
+     ELSE
+       IF(A AND C >B) THEN
+       DISPLAY 'A AND C ARE BIGGER'
+     ELSE 
+        IF(B AND C >A) THEN
+        DISPLAY 'B AND C ARE BIGGER'
+     ELSE
+        IF(A>B AND A>C) THEN
+        DISPLAY 'A IS BIGGER'
+     ELSE 
+        IF(B>A AND B>C) THEN
+        DISPLAY 'B IS BIGGER'
+     ELSE 
+        IF(C>A AND C>B) THEN
+        DISPLAY 'C IS BIGGER'
+      END-IF
+      END-IF
+      END-IF
+      END-IF
+      END-IF
+      END-IF
+      END-IF.
+     STOP RUN.
+
+   JCL
+SYSIN DD*
+33
+33
+33
+
+44
+45
+21
+
+95
+50
+94
+
+36
+58
+56
+
+87
+64
+43
+
+33
+92
+34
+
+44
+43
+67
+/*
+
+
+2)WRITE A COBOL PROGRAM THAT ACCEPTS NAMES IN A TABLE
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. tblname.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 WS-REC.
+           05 NAME1 OCCURS 10 TIMES.
+              10 FIRST1 PIC X(01).
+                 88 FVALID VALUE 'A' THRU 'Z'.
+              10 LAST1  PIC X(03).
+                 88 LVALID VALUE 'a' THRU 'z'.
+       77 I PIC 99.
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+            ACCEPT WS-REC.
+            PERFORM A100-A-PARA
+             VARYING I FROM 1 BY 1 UNTIL I >10.
+            STOP RUN.
+       A100-A-PARA.
+           IF ( NAME1(I)(1:1) = 'A' ) THEN
+               IF( ( NAME1(I)(2:1) >= 'a' AND NAME1(I)(2:1) <= 'z') AND
+                   ( NAME1(I)(3:1) >= 'a' AND NAME1(I)(3:1) <= 'z') AND
+                   ( NAME1(I)(4:1) >= 'a' AND NAME1(I)(4:1) <= 'z') )
+                   THEN
+                   DISPLAY NAME1(I)
+           END-IF.
+       
+
+
+     
+ 
+3)
+
+  IDENTIFICATION DIVISION.
+  PROGRAM-ID. COB01.
+  ENVIRONMENT DIVISION.
+  DATA DIVISION.
+  WORKING STORAGE SECTION.
+  01 WS-WEEK.
+   05 WEEK PIC X(3).
+      88 MON VALUE 'MON'.
+      88 TUE VALUE 'TUE'.
+      88 WED VALUE 'WED'.
+      88 THU VALUE 'THU'.
+      88 FRI VALUE 'FRI'.
+      88 SAT VALUE 'SAT'.
+      88 SUN VALUE 'SUN'. 
+   PROCEDURE DIVISION.
+      ACCEPT WEEK.
+      EVALUATE WEEK
+      WHEN 'MON'
+      DISPLAY 'WORKING DAY'
+      WHEN 'TUE'
+      DISPLAY 'WORKING DAY'
+      WHEN 'WED'
+      DISPLAY 'WORKING DAY'
+      WHEN 'THU'
+      DISPLAY 'WORKING DAY'
+      WHEN 'WED'
+      DISPLAY 'WORKING DAY'
+      WHEN 'FRI'
+      DISPLAY 'HOLIDAY'
+      WHEN 'SAT'
+      DISPLAY 'HOLIDAY'
+      END-EVALUATE.
+      STOP RUN. 
+
+
+                                                     

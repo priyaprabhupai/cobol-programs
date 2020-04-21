@@ -1,0 +1,94 @@
+
+1)PRIME NO
+
+  ID DIVISION.                                                     
+       PROGRAM-ID. PRIME.                                               
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 WS-NUM1      PIC 9(2).                                       
+       01 WS-NUM2      PIC 9(2).                                        
+       01 WS-MOD       PIC 9(2).                                        
+       01 I            PIC 9(2) VALUE 1.                                
+       01 J            PIC 9(2) VALUE 1.                                
+       01 X            PIC 9(2) VALUE 1.                                
+       01 C            PIC 9(2) VALUE 1.                                
+       PROCEDURE DIVISION.                                              
+       MAIN-PARA.                                                         
+           ACCEPT WS-NUM1                                               
+           ACCEPT WS-NUM2                                               
+           PERFORM PARA-1 VARYING I FROM WS-NUM1 BY 1                   
+                  UNTIL I > WS-NUM2.                                    
+           STOP RUN.                                                    
+       PARA-1.                                                          
+           COMPUTE C = 0                                                
+           PERFORM PARA-2 VARYING J FROM 2 BY 1                         
+                  UNTIL J = WS-NUM1                                     
+           IF C = 0                                                     
+              DISPLAY I.                                                
+       PARA-2.                                                          
+           DIVIDE I BY J GIVING X REMAINDER WS-MOD                      
+           IF   WS-MOD = 0  THEN                                        
+                COMPUTE C = C + 1                                       
+           END-IF.   
+
+
+2) EVENODD NO
+     
+       ID DIVISION.                                                     
+       PROGRAM-ID. EVENODD.                                             
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 WS-NUM.                                                       
+          05 WS-ARR  PIC 9(8) OCCURS 5 TIMES.                           
+       01 WS-NUM2    PIC 9(8).                                          
+       01 WS-R       PIC 9(8).                                          
+       01 WS-R2      PIC 9(8).                                          
+       01 WS-R3      PIC 9(8).                                          
+       01 WS-ESUM    PIC 9(8) VALUE ZERO.                               
+       01 WS-OSUM    PIC 9(8) VALUE ZERO.                               
+       01 I          PIC 9(1) VALUE ZERO.                               
+       PROCEDURE DIVISION.                                              
+           PERFORM 5 TIMES                                              
+              ADD 1 TO I                                                
+              ACCEPT WS-ARR(I)                                          
+           END-PERFORM                                                  
+           PERFORM MAIN-PARA VARYING I FROM 1 BY 1 UNTIL I > 5          
+           STOP RUN.                                                    
+       MAIN-PARA.                                                       
+           DISPLAY WS-ARR(I)                                            
+              COMPUTE WS-ESUM = 0                                       
+              COMPUTE WS-OSUM = 0                                       
+           PERFORM UNTIL WS-ARR(I) = 0                                  
+              DIVIDE WS-ARR(I) BY 10 GIVING WS-NUM2 REMAINDER WS-R      
+              DIVIDE WS-R BY 2 GIVING WS-R3 REMAINDER WS-R2             
+              IF WS-R2 = 0 THEN                                         
+                 COMPUTE WS-ESUM = WS-ESUM + WS-R                       
+              ELSE                                                      
+                 COMPUTE WS-OSUM = WS-OSUM + WS-R                      
+              END-IF                                                    
+              MOVE WS-NUM2 TO WS-ARR(I)                                
+           END-PERFORM                                                  
+           DISPLAY WS-ESUM                                              
+           DISPLAY WS-OSUM.                                             
+
+3) VOWELS
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. VOWELS.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 STR1 PIC X(26).
+       01 CNTR PIC 99 VALUE 0.
+       PROCEDURE DIVISION.
+       MAIN-PARA.
+            ACCEPT STR1.
+            PERFORM A100-PARA.
+            STOP RUN.
+       A100-PARA.
+           INSPECT STR1 TALLYING CNTR FOR ALL ' A ' , ' a ' , ' E '
+           , ' e ' , ' I ' , ' i ' , ' O ' , ' o ' , ' U ' , ' u ' .
+           DISPLAY 'STRING : ' STR1 .
+           DISPLAY 'VOWELS cnt: ' CNTR.
