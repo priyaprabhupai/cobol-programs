@@ -1,0 +1,114 @@
+Q1) Write a cobol program that compares 3 variables and print the desired
+output as mentioned below based on the given input. Accept the input from user
+and store it in a,b,c variables. Use nested if condition.
+
+Test for scenarios as follows:
+- All are equal
+- A and B are Bigger
+- A and C are Bigger
+- B and C are Bigger
+- A is Bigger 
+- B is Bigger 
+- C is Bigger 
+
+
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. comp3var.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+          77 A PIC 9.
+          77 B PIC 9.
+          77 C PIC 9.
+       PROCEDURE DIVISION.
+          DISPLAY 'ENTER A'.
+          ACCEPT A.
+          DISPLAY 'ENTER B'.
+          ACCEPT B.
+          DISPLAY 'ENTER C'.
+          ACCEPT C.
+          DISPLAY '----------------------'.
+            IF A = B
+                IF B = C
+                    DISPLAY 'ALL ARE EQUAL'
+                    ELSE
+                        IF B > C
+                           DISPLAY 'A,B ARE GREATER'
+                        ELSE
+                            DISPLAY 'C IS GREATER'
+                        END-IF
+                END-IF
+                ELSE
+                IF A > B
+                    IF A > C
+                        DISPLAY 'A IS GREATER'
+                    ELSE
+                        IF B >= C
+                            DISPLAY 'A IS GREATER'
+                        ELSE
+                            IF C > A
+                                DISPLAY 'C IS GREATER'
+                            ELSE
+                                DISPLAY 'A,C ARE GREATER'
+                            END-IF
+                        END-IF
+                    END-IF
+                ELSE
+                IF B > C
+                    DISPLAY 'B IS GREATER'
+                    ELSE
+                        IF C = B
+                        DISPLAY 'B,C ARE GREATER'
+                        ELSE
+                            DISPLAY 'C IS GREATER'
+                        END-IF
+                    END-IF
+            END-IF.
+
+
+Q2) Write a COBOL program that accepts names in table.
+Display only those elements where the names starts with A.
+The first letter should be in upper case and rest of the name
+to be in lowercase. Use reference modification and 
+instrinsic functions.
+
+Q3) Write a Cobol program to accept a day and display if the day
+is working day (Mon, tues,wed,thu, fri) or holiday (Sat,sun).
+Use 88 level condition variable and evaluate statement.
+
+IDENTIFICATION DIVISION.
+PROGRAM-ID. HELLO-WORLD.
+DATA DIVISION.
+    WORKING-STORAGE SECTION.
+        
+
+      01 ws-day1.
+         05 week pic x(3).
+          88 mon     value   'mon'.
+          88 tue     value   'tue'.
+          88 wed     value   'wed'.
+          88 thu     value   'thu'.
+          88 fri     value   'fri'.
+          88 sat     value   'sat'.  
+          88 sun     value   'sun'. 
+    PROCEDURE DIVISION.
+        accept week.
+        Evaluate week
+           WHEN 'mon'
+            display 'it is working day'
+           WHEN 'tue'
+            display 'it is working day'
+           WHEN 'wed'
+            display 'it is working day'
+           WHEN 'thu'
+            display 'it is working day'
+           WHEN 'fri'
+            display 'it is working day'
+           WHEN 'sat'
+            display 'it is  holiday'
+           WHEN 'sun'
+            display 'it is holiday'
+           WHEN OTHER
+             display 'wrong choice'
+        end-evaluate.
+
+STOP RUN.
