@@ -1,0 +1,36 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID. HELLO-WORLD.
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 cehck-week.
+       05 week pic x(3).
+        88 sun  value   'sun'.
+        88 mon  value   'mon'.
+        88 tue  value   'tue'.
+        88 wed  value   'wed'.
+        88 thu  value   'thu'.
+        88 fri  value   'fri'.
+        88 sat  value   'sat'.
+    
+PROCEDURE DIVISION.
+    accept week.
+    EVALUATE week
+    when 'sun'
+       display 'holiday'
+    when 'mon'
+       display 'working day'
+    when 'tue'
+       display 'working day'  
+    when 'wed'
+       display 'working day'
+    when 'thu'
+       display 'working day'   
+    when 'fri'
+       display 'working day'
+    when 'sat'
+       display ' holiday'  
+    when other
+       display 'invalid option'
+    END-EVALUATE.
+    
+STOP RUN.
