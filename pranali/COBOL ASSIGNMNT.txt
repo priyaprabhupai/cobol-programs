@@ -1,0 +1,239 @@
+1)write a  cobol program that compares three variables and print the 
+desired output
+
+     IDENTIFICATION DIVISION.                                
+     PROGRAM-ID. COBOL1.                                     
+     ENVIRONMENT DIVISION.                                    
+     DATA DIVISION.                                              
+     WORKING-STORAGE SECTION. 
+       01 A PIC 9(2).
+       01 B PIC 9(2).
+       01 C PIC 9(2).
+     PROCEDURE DIVISION.
+         ACCEPT A.
+         ACCEPT B.
+         ACCEPT C.
+     IF(A=B=C) THEN
+      DISPLAY 'ALL ARE EQUAL'
+     ELSE
+       IF(A AND B > C) THEN
+       DISPLAY 'A AND B ARE BIGGER'
+     ELSE
+       IF(A AND C >B) THEN
+       DISPLAY 'A AND C ARE BIGGER'
+     ELSE 
+        IF(B AND C >A) THEN
+        DISPLAY 'B AND C ARE BIGGER'
+     ELSE
+        IF(A>B AND A>C) THEN
+        DISPLAY 'A IS BIGGER'
+     ELSE 
+        IF(B>A AND B>C) THEN
+        DISPLAY 'B IS BIGGER'
+     ELSE 
+        IF(C>A AND C>B) THEN
+        DISPLAY 'C IS BIGGER'
+      END-IF
+      END-IF
+      END-IF
+      END-IF
+      END-IF
+      END-IF
+      END-IF.
+     STOP RUN.
+
+   JCL
+SYSIN DD*
+20
+20
+20
+
+24
+24
+21
+
+19
+45
+23
+
+98
+23
+12
+
+65
+65
+88
+
+76
+12
+99
+
+31
+23
+91
+/*
+
+
+2)WRITE A COBOL PROGRAM THAT ACCEPTS NAMES IN A TABLE
+
+
+
+     IDENTIFICATION DIVISION.                                
+     PROGRAM-ID. COBOL2.                                     
+     ENVIRONMENT DIVISION.                                    
+     DATA DIVISION.
+      01 WS-REC.
+           05 NAME1 OCCURS 10 TIMES.
+              10 FIRST1 PIC X(01).
+                 88 FVALID VALUE 'A' THRU 'Z'.
+              10 LAST1  PIC X(03).
+                 88 LVALID VALUE 'a' THRU 'z'.
+       77 I PIC 99.
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+            ACCEPT WS-REC.
+            PERFORM A100-A-PARA
+             VARYING I FROM 1 BY 1 UNTIL I >10.
+            STOP RUN.
+       A100-A-PARA.
+           IF ( NAME1(I)(1:1) = 'A' ) THEN
+               IF( ( NAME1(I)(2:1) >= 'a' AND NAME1(I)(2:1) <= 'z') AND
+                   ( NAME1(I)(3:1) >= 'a' AND NAME1(I)(3:1) <= 'z') AND
+                   ( NAME1(I)(4:1) >= 'a' AND NAME1(I)(4:1) <= 'z') )
+                   THEN
+                   DISPLAY NAME1(I)
+           END-IF.
+      
+
+
+     
+     
+3)  WEEKDAYS SHEDULE PROGRAM 
+
+     IDENTIFICATION DIVISION.                                
+     PROGRAM-ID. COBOL3.                                     
+     ENVIRONMENT DIVISION.                                    
+     DATA DIVISION.
+     WORKING-STORAGE SECTION.
+       01 WEEKDAYS.
+         05 WEEK PIC X(3).
+          88 FIRST    VALUE   'SUN'.
+          88 SECND  VALUE   'MON'.
+          88 THREE  VALUE   'TUE'.
+          88 FOUR    VALUE    'WED'.
+          88 FIVE      VALUE   'THU'.
+          88 SIX         VALUE   'FRI'.
+          88 SEVEN  VALUE   'SAT'.
+     PROCEDURE DIVISION.
+         ACCEPT WEEK
+         EVALUATE WEEK
+         WHEN 'SUN'
+           DISPLAY 'HOLIDAY'
+         WHEN 'SAT'
+           DISPLAY 'HOLIDAY'
+          WHEN OTHER
+            DISPLAY 'WORKING DAY'
+         END-EVALUATE.
+    STOP RUN.
+    
+
+4) VOWELS PROGRAM
+
+
+
+IDENTIFICATION DIVISION.
+PROGRAM-ID. HELLO-WORLD.
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+    77 WS-STR  PIC X(15).
+    77 WS-CTR1 PIC 99 VALUE 0.
+
+PROCEDURE DIVISION.
+MAIN-PARA.
+       ACCEPT WS-STR.
+       PERFORM A100-PARA.
+       STOP RUN.
+A100-PARA.
+        INSPECT WS-STR TALLYING WS-CTR1 FOR ALL 'A','a','E','e','I','i','O','o','U','u'.
+    DISPLAY  'THE ENTERED STRING IS :'   WS-STR.
+    DISPLAY  WS-CTR1.
+       
+
+
+5) SUM OF EVEN AND ODD NUMBERS
+
+  
+
+IDENTIFICATION DIVISION.                                    
+       PROGRAM-ID. PRG25.                                          
+       ENVIRONMENT DIVISION.                                       
+       DATA DIVISION.                                              
+       WORKING-STORAGE SECTION.                                    
+       01 EVEN-ODD.                                                
+           05 NUM        PIC 9(8) OCCURS 5 TIMES.                
+       77 SUM-EVEN       PIC 9(4) VALUE 0.                         
+       77 SUM-ODD        PIC 9(4) VALUE 0.                         
+       77 IDX            PIC 9(3) VALUE 1.                         
+       77 QUO            PIC 9(3).                                 
+       77 REM            PIC 9(3).                                 
+       PROCEDURE DIVISION.                                                                                                                                       
+       MAIN-PARA.                                                  
+            PERFORM COMP-PARA.                                   
+            STOP RUN.                                            
+        COMP-PARA.                                               
+            PERFORM VARYING IDX FROM 1 BY 1 UNTIL IDX > 100      
+               DIVIDE IDX BY 2 GIVING QUO REMAINDER REM          
+               IF REM = 0                                        
+                  COMPUTE SUM-EVEN = SUM-EVEN + IDX              
+               ELSE                                              
+                  COMPUTE SUM-ODD = SUM-ODD  + IDX               
+               END-IF                                            
+            END-PERFORM.                                         
+            DISPLAY "SUM EVEN" SUM-EVEN.                         
+            DISPLAY "SUM ODD" SUM-ODD.     
+
+
+6) PRIME NUMBER
+
+       ID DIVISION.                                                     
+       PROGRAM-ID. PRIME.                                               
+       ENVIRONMENT DIVISION.                                           
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 WS-NUM1      PIC 9(2).                                        
+S       01 WS-NUM2      PIC 9(2).                                        
+       01 WS-MOD       PIC 9(2).                                        
+       01 WS-I         PIC 9(2) VALUE 1.                                
+       01 WS-J         PIC 9(2) VALUE 1.                                
+       01 WS-X         PIC 9(2) VALUE 1.                                
+       01 WS-C         PIC 9(2) VALUE 1.                                
+       PROCEDURE DIVISION.                                              
+       MAIN-PARA.                                                       
+           ACCEPT WS-NUM1                                               
+           ACCEPT WS-NUM2                                               
+           PERFORM PARA-1 VARYING WS-I FROM WS-NUM1 BY 1                   
+                  UNTIL WS-I > WS-NUM2.                                    
+           STOP RUN.                                                    
+       PARA-1.                                                          
+           COMPUTE WS-C = 0                                                
+           PERFORM PARA-2 VARYING WS-J FROM 2 BY 1                         
+                  UNTIL WS-J = WS-NUM1                                     
+           IF WS-C = 0                                                     
+              DISPLAY I.                                                
+       PARA-2.                                                          
+           DIVIDE WS-I BY WS-J GIVING WS-X REMAINDER WS-MOD                      
+           IF   WS-MOD = 0  THEN                                        
+                COMPUTE WS-C = WS-C + 1                                       
+           END-IF.                                                      
+
+
+
+
+
+
+
+
+
+
+
+                             
