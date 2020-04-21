@@ -1,0 +1,6 @@
+1. you have to list all prime numbers between given two numbers
+e.g: no1 - 5 and not2-15 then output will be 5,7,11,13
+
+2. consider an array of 5 elements with pic clasue 9(8)... for each element display the sum of even digits and odd digits
+
+3.open a file with some text....count the number of vowels in the file
