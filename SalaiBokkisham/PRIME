@@ -1,0 +1,30 @@
+       IDENTIFICATION DIVISION.                                         00010001
+       PROGRAM-ID. PRIME.                                               00020001
+       ENVIRONMENT DIVISION.                                            00030001
+       DATA DIVISION.                                                   00040001
+       WORKING-STORAGE SECTION.                                         00050001
+       01 WS-NUM1 PIC 9(2) VALUE 7.                                     00060008
+       01 WS-NUM2 PIC 9(2) VALUE 20.                                    00061001
+       01 R PIC 9(2).                                                   00070001
+       01 Q PIC 9(2).                                                   00080001
+       01 I PIC 9(2).                                                   00082002
+       01 A PIC 9(2).                                                   00083013
+       PROCEDURE DIVISION.                                              00090001
+       MAIN-PARA.                                                       00091009
+           PERFORM PARA VARYING A FROM WS-NUM1 BY 1 UNTIL               00093020
+           A >= WS-NUM2.                                                00093121
+           STOP RUN.                                                    00094011
+       PARA.                                                            00100017
+            MOVE 2 TO I                                                 00110012
+            PERFORM UNTIL I >= A                                        00110230
+             DIVIDE A BY I GIVING Q REMAINDER R                         00111030
+              IF R IS EQUAL TO 0                                        00120043
+              MOVE A TO I                                               00121049
+              END-IF                                                    00180002
+              ADD 1 TO I                                                00190044
+            END-PERFORM                                                 00200012
+            IF A = I                                                    00200130
+             DISPLAY 'THE' A 'IS PRIME'                                 00200230
+            ELSE                                                        00200337
+             DISPLAY 'THE' A  'NOT PRIME'                               00200442
+            END-IF.                                                     00200517
