@@ -1,0 +1,50 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID. GREATEST.
+DATA DIVISION.
+    WORKING-STORAGE SECTION.
+        77 x PIC 99.
+        77 y PIC 99.
+        77 z PIC 99.
+PROCEDURE DIVISION.
+        accept x.
+        accept y.
+        accept z.
+    IF (X = Y) THEN
+       IF (X = Z) THEN
+           DISPLAY 'ALL ARE EQUAL'
+       ELSE
+          IF(X > Z) THEN
+             DISPLAY "X AND Y ARE BIGGER"
+          ELSE
+             DISPLAY "Z IS BIGGER"
+          END-IF
+        END-IF
+    ELSE
+        IF(X = Z) THEN
+          IF(X > Y) THEN
+              DISPLAY "X AND Z ARE BIGGER"
+          ELSE
+              DISPLAY "Y IS BIGGER"
+          END-IF
+        ELSE
+           IF(Y = Z) THEN
+              IF(Y > X) THEN
+                DISPLAY "Y AND Z ARE BIGGER"
+              ELSE
+                DISPLAY "X IS BIGGER"
+              END-IF
+            ELSE
+               IF(X > Y AND X > Z) THEN
+                 DISPLAY "X IS BIGGER"
+               END-IF
+               IF(Y > X AND Y > Z) THEN
+                  DISPLAY "Y IS BIGGER"
+                END-IF
+                IF(Z > Y AND Z > X)
+                  DISPLAY "Z IS BIGGER"
+                END-IF
+            END-IF    
+        END-IF    
+    END-IF.
+    
+STOP RUN.

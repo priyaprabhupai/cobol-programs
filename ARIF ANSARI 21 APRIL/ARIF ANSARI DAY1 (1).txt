@@ -1,0 +1,32 @@
+IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. PRIME.                                               
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 WS-NUM1 PIC 9(2) .                                     
+       01 WS-NUM2 PIC 9(2) .                                    
+       01 R PIC 9(2).                                                   
+       01 Q PIC 9(2).                                                   
+       01 I PIC 9(2).                                                   
+       01 A PIC 9(2).                                                   
+       PROCEDURE DIVISION.  
+       accept WS-NUM1.
+       accept WS-NUM2.
+       MAIN-PARA.                                                       
+           PERFORM PARA VARYING A FROM WS-NUM1 BY 1 UNTIL               
+           A >= WS-NUM2.                                                
+           STOP RUN.                                                    
+       PARA.                                                            
+            MOVE 2 TO I                                                 
+            PERFORM UNTIL I >= A                                        
+             DIVIDE A BY I GIVING Q REMAINDER R                         
+              IF R IS EQUAL TO 0                                        
+              MOVE A TO I                                               
+              END-IF                                                    
+              ADD 1 TO I                                                
+            END-PERFORM                                                 
+            IF A = I                                                   
+             DISPLAY 'THE' A 'IS PRIME'                                 
+            ELSE                                                        
+             DISPLAY 'THE' A  'NOT PRIME'                               
+            END-IF.
