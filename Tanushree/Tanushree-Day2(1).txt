@@ -1,0 +1,33 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID. HELLO-WORLD.
+DATA DIVISION.
+    WORKING-STORAGE SECTION.
+        77 A PIC 99.
+        77 B PIC 99.
+        77 C PIC 99.
+PROCEDURE DIVISION.
+    ACCEPT A.
+    ACCEPT B.
+    ACCEPT C.
+    IF ((A = B) AND (B = C))
+        DISPLAY 'ALL ARE EQUAL'
+    END-IF.
+    IF (A > B AND A > C)
+          DISPLAY 'A IS BIGGER'
+    END-IF    
+    IF (B > A  AND B > C)
+          DISPLAY 'B IS BIGGER'
+    END-IF
+    IF (C > A AND C > B)
+          DISPLAY 'C IS BIGGER'
+    END-IF   
+    IF (A > B  AND B > C)
+        DISPLAY 'A AND B ARE BIGGER'
+    END-IF 
+    IF (B > C AND C > A)
+        DISPLAY 'B AND C ARE BIGGER'
+    END-IF
+    IF (C > A  AND A > B)
+        DISPLAY 'C AND A ARE BIGGER'
+    END-IF.    
+STOP RUN.

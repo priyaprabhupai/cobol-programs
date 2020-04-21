@@ -1,0 +1,39 @@
+       IDENTIFICATION DIVISION.                                         00010000
+       PROGRAM-ID. PGM1.                                                00020000
+       ENVIRONMENT DIVISION.                                            00030000
+       DATA DIVISION.                                                   00040000
+       WORKING-STORAGE SECTION.                                         00050000
+       77  N                PIC     9(3) VALUE  ZERO.                   00060004
+       77  I                  PIC     9(3)   VALUE  ZERO.               00070000
+       77  REM          PIC     9(3)  VALUE  ZERO.                      00080000
+       77  Q                PIC     9      VALUE  ZERO.                 00090000
+       PROCEDURE DIVISION.                                              00100000
+       MAIN-PARA.                                                       00110000
+           PERFORM ACCEPT-PARA.                                         00120000
+           PERFORM PROCESS-PARA.                                        00130000
+           PERFORM DISPLAY-PARA.                                        00140000
+           STOP RUN.                                                    00150000
+       ACCEPT-PARA.                                                     00160000
+           DISPLAY " ENTER N VALUE : ".                                 00170000
+           ACCEPT N.                                                    00180000
+           IF N IS ALPHABETIC                                           00190000
+           DISPLAY N " IS ALPHABETIC : PLEASE ENTER NUMERIC VALUE  "    00200000
+           ELSE IF N IS NUMERIC                                         00210000
+           DISPLAY N " IS NUMERIC "                                     00220000
+                ELSE                                                    00230000
+           DISPLAY N " IS ALPHANUMERIC : PLEASE ENTER NUMERIC VALUE "   00240000
+           END-IF.                                                      00250000
+       PROCESS-PARA.                                                    00260000
+           MOVE 2 TO I.                                                 00270000
+           PERFORM UNTIL  I  >= N                                       00280000
+           DIVIDE N BY I GIVING Q REMAINDER REM                         00290000
+             IF REM = 0 THEN                                            00300000
+                 DISPLAY 'GIVEN NUMBER IS NOT PRIME'                    00310000
+                 STOP RUN                                               00320000
+             END-IF                                                     00330000
+           ADD 1 TO I                                                   00340000
+           END-PERFORM.                                                 00350000
+       DISPLAY-PARA.                                                    00360000
+           IF N = I THEN                                                00370000
+             DISPLAY 'GIVEN NUMBER IS PRIME'                            00380000
+           END-IF.                                                      00390000
