@@ -1,0 +1,37 @@
+       IDENTIFICATION DIVISION.                                         
+       PROGRAM-ID. EVEN.                                              
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.                                         
+       01 WS-TABLE.                                                    
+           05 WS-NUM PIC 9(8) OCCURS 5 TIMES INDEXED BY IND.           
+       01 ODD PIC 9(8) VALUE 0.                                         
+       01 EVEN PIC 9(8) VALUE 0.                                        
+       01 Q PIC 9(8).                                                   
+       01 Q1 PIC 9(8).                                                 
+       01 R PIC 9(8).                                                  
+       01 R1 PIC 9(8).                                                  
+       01 A PIC 9(8).                                                   
+       01 I PIC 9(2) VALUE 0.                                          
+       PROCEDURE DIVISION.                                              
+       MAIN-PARA.                                                       
+           PERFORM A-PARA VARYING I FROM 1 BY 1 UNTIL I > 5             
+           STOP RUN.                                                    
+       A-PARA.                                                          
+           SET IND TO 1                                                 
+           ACCEPT WS-NUM(IND)                                           
+           PERFORM PARA UNTIL WS-NUM(IND) EQUAL TO 0                    
+           DISPLAY 'SUM OF EVEN DIGITS: ' EVEN                          
+           DISPLAY 'SUM OF ODD DIGITS: ' ODD                            
+           MOVE 0 TO EVEN                                               
+           MOVE 0 TO ODD                                                
+           SET IND UP BY 1.                                            
+       PARA.                                                          
+           DIVIDE WS-NUM(IND) BY 10 GIVING Q REMAINDER R                
+           MOVE Q TO WS-NUM(IND)                                       
+           DIVIDE R BY 2 GIVING Q1 REMAINDER R1                         
+           IF R1 IS EQUAL TO 0                                          
+           COMPUTE EVEN = EVEN + R                                      
+           ELSE                                                         
+           COMPUTE ODD = ODD + R                                        
+           END-IF.                                                     
