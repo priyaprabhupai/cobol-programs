@@ -1,0 +1,33 @@
+000100        IDENTIFICATION DIVISION.                                         
+000200        PROGRAM-ID. PRIME.                                               
+000300        ENVIRONMENT DIVISION.                                            
+000400        DATA DIVISION.                                                   
+000500        WORKING-STORAGE SECTION.                                         
+000600        77 MIN PIC 9(4).                                                 
+000700        77 MAX PIC 9(4).                                                 
+000800        77 I PIC 9(4).                                                   
+000900        77 J PIC 9(4).                                                   
+001000        77 K PIC 9(4).                                                   
+001100        77 COUNTER PIC 9(4).                                             
+001200        77 REM PIC 9(3).                                                 
+001300        PROCEDURE DIVISION.                                              
+001400        MAIN-PARA.                                                       
+001500            DISPLAY "ENTER MINIMUM VALUE (M) : ".                        
+001600            ACCEPT MIN.                                                  
+001700            DISPLAY "ENTER MAXIMUM NUMBER (N) : ".                       
+001800            ACCEPT MAX.                                                  
+001900            IF MIN > MAX                                                 
+002000               DISPLAY "LOWER LIMIT GREATER THAN UPPER"                  
+002100               STOP RUN.                                                 
+002200            DISPLAY "PRIME NUMBERS BETWEEN " MIN " AND " MAX " ARE :".   
+002300            PERFORM PARA-1 VARYING I FROM MIN BY 1 UNTIL I > MAX.        
+002500            STOP RUN.                                                    
+002600        PARA-1.                                                    
+002700            COMPUTE COUNTER = 0.                                   
+002800            PERFORM PARA-2 VARYING J FROM 2 BY 1 UNTIL J > (I / 2).
+002900            IF COUNTER = 0                                         
+003000              DISPLAY I.                                           
+003100        PARA-2.                                                    
+003200            DIVIDE I BY J GIVING K REMAINDER REM.                  
+003300            IF REM = 0                                             
+003400               COMPUTE COUNTER = COUNTER + 1.                      
