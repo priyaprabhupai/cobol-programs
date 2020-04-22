@@ -1,0 +1,39 @@
+      ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. WEAKDAYS.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-DOW.
+         05 WS-DAY PIC X(3).
+           88 DAY-1  VALUE 'MON'.
+           88 DAY-2  VALUE 'TUE'.
+           88 DAY-3  VALUE 'WED'.
+           88 DAY-4  VALUE 'THU'.
+           88 DAY-5  VALUE 'FRI'.
+           88 DAY-6  VALUE 'SAT'.
+           88 DAY-7  VALUE 'SUN'.
+       PROCEDURE DIVISION.
+       DISPLAY 'ENTER DAY OF THE WEAK'
+       ACCEPT WS-DAY
+           EVALUATE WS-DAY
+             WHEN 'MON'
+               DISPLAY "WORKING DAY "
+             WHEN 'TUE'
+               DISPLAY "WORKINK DAY "
+             WHEN 'WED'
+               DISPLAY "WORKING DAY "
+             WHEN 'THU'
+               DISPLAY "WORKING DAY "
+             WHEN 'FRI'
+               DISPLAY "WORKING DAY "
+             WHEN 'SAT'
+               DISPLAY "HOLIDAY "
+             WHEN'SUN'
+               DISPLAY "HOLIDAY "
+           END-EVALUATE
+          STOP RUN.

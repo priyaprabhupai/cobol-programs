@@ -1,0 +1,37 @@
+        ID DIVISION.
+       PROGRAM-ID. EVENODD.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-NUM1.
+          05 WS-ARR  PIC 9(8) OCCURS 5 TIMES.
+       01 WS-NUM2    PIC 9(8).
+       01 WS-R       PIC 9(8).
+       01 WS-R2      PIC 9(8).
+       01 WS-R3      PIC 9(8).
+       01 WS-ESUM    PIC 9(8) VALUE ZERO.
+       01 WS-OSUM    PIC 9(8) VALUE ZERO.
+       01 I          PIC 9(1) VALUE ZERO.
+       PROCEDURE DIVISION.
+           PERFORM 5 TIMES
+              ADD 1 TO I
+              ACCEPT WS-ARR(I)
+           END-PERFORM
+           PERFORM MAIN-PARA VARYING I FROM 1 BY 1 UNTIL I > 5
+           STOP RUN.
+       MAIN-PARA.
+           DISPLAY WS-ARR(I)
+              COMPUTE WS-ESUM = 0
+              COMPUTE WS-OSUM = 0
+           PERFORM UNTIL WS-ARR(I) = 0
+              DIVIDE WS-ARR(I) BY 10 GIVING WS-NUM2 REMAINDER WS-R
+              DIVIDE WS-R BY 2 GIVING WS-R3 REMAINDER WS-R2
+              IF WS-R2 = 0 THEN
+                 COMPUTE WS-ESUM = WS-ESUM + WS-R
+              ELSE
+                 COMPUTE WS-OSUM = WS-OSUM + WS-R
+              END-IF
+              MOVE WS-NUM2 TO WS-ARR(I)
+           END-PERFORM
+           DISPLAY WS-ESUM                                        
+           DISPLAY WS-OSUM.                                            

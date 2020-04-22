@@ -1,0 +1,38 @@
+      ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. PRIMENUMBERS.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 WS-SRANGE     PIC 9(2).
+       01 WS-ERANGE      PIC 9(2).
+       01 WS-MOD       PIC 9(2).
+       01 I            PIC 9(2) VALUE 1.
+       01 J            PIC 9(2) VALUE 1.
+       01 X            PIC 9(2) VALUE 1.
+       01 C            PIC 9(2) VALUE 1.
+       PROCEDURE DIVISION.
+       MAIN-PARA.
+       DISPLAY "ENTER STARTING RANGE"    
+           ACCEPT WS-SRANGE
+       DISPLAY "ENTER ENDING RANGE"    
+           ACCEPT WS-ERANGE
+           PERFORM PARA-1 VARYING I FROM WS-SRANGE BY 1
+                  UNTIL I > WS-ERANGE.
+           STOP RUN.
+       PARA-1.
+           COMPUTE C = 0
+           PERFORM PARA-2 VARYING J FROM 2 BY 1
+                  UNTIL J = WS-SRANGE
+           IF C = 0
+              DISPLAY I.
+       PARA-2.
+           DIVIDE I BY J GIVING X REMAINDER WS-MOD
+           IF   WS-MOD = 0  THEN
+               COMPUTE C = C + 1
+           END-IF.

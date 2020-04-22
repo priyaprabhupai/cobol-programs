@@ -1,0 +1,32 @@
+      ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CHKLOWUP.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-TB.
+            05 STR1 OCCURS 10 TIMES.
+               10 FIRST1 PIC X(01).
+                  88 FVALID VALUE 'A' THRU 'Z'.
+               10 LAST1 PIC X(10).
+                  88 FVALID VALUE 'a' THRU 'z'.
+       77 I PIC 99.
+       PROCEDURE DIVISION.
+       ACCEPT WS-TB.
+             PERFORM A100-A-PARA
+              VARYING I FROM 1 BY 1 UNTIL I > 10.
+            STOP RUN.
+       A100-A-PARA.
+           IF ( STR1(I)(1:1) = 'A' ) THEN
+               IF ( ( STR1(I)(2:1) >= 'a' AND STR1(I)(2:1) <= 'z') AND
+                  ( STR1(I)(3:1) >= 'a' AND STR1(I)(3:1) <= 'z') AND
+                  ( STR1(I)(4:1) >= 'a' AND STR1(I)(4:1) <= 'z') ) THEN
+                  DISPLAY STR1(I)
+               ELSE
+                  DISPLAY "no words starts with A"
+           END-IF.
+       END PROGRAM CHKLOWUP.
