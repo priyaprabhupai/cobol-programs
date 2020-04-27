@@ -1,0 +1,69 @@
+  ******************************************************************
+      * Author: shivasai   
+      * Date: 27/04/2020
+      * Purpose:assessment
+      * Tectonics: cobol
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. REMOVING-DULPICATES.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+         01  TABLES.                                                   
+         05  TABL-ENTRIES            PIC S9(3)    COMP-3   VALUE 10.         
+         05  TABL-VALUES.                                           
+         10  FILLER              PIC X(8)     VALUE '3'.       
+         10  FILLER              PIC X(8)     VALUE '5'.       
+         10  FILLER              PIC X(8)     VALUE '7'.       
+         10  FILLER              PIC X(8)     VALUE '3'.       
+         10  FILLER              PIC X(8)     VALUE '6'.       
+         10  FILLER              PIC X(8)     VALUE '5'.       
+         10  FILLER              PIC X(8)     VALUE '3'.       
+         10  FILLER              PIC X(8)     VALUE '8'.       
+         10  FILLER              PIC X(8)     VALUE '9'.       
+         10  FILLER              PIC X(8)     VALUE '1'.       
+         05  TABL REDEFINES TABL-VALUES                             
+                                 PIC X(8)     OCCURS 10 TIMES. 
+         05  SUB-1                   PIC S9(3)    COMP-3 
+                                              VALUE 1.       
+         05  SUB-2                   PIC S9(3)    COMP-3         
+                                              VALUE 1.       
+                                                             
+         LINKAGE SECTION.                                           
+                                                             
+                                                             
+        PROCEDURE DIVISION.                                         
+                                                             
+          DISPLAY 'TABLE VALUES'                                 
+           DISPLAY ' '.                                           
+                                                             
+           PERFORM VARYING SUB-1 FROM 1 BY 1                             
+             UNTIL SUB-1 > TABL-ENTRIES                           
+           DISPLAY TABL(SUB-1)                               
+            END-PERFORM.
+                                           
+            DISPLAY ' '                                                 
+              DISPLAY 'DUP LIST'                                           
+            DISPLAY ' '                                                 
+                                                                 
+             PERFORM                                                     
+             VARYING SUB-1 FROM 1 BY 1                                 
+            UNTIL SUB-1 > TABL-ENTRIES                                 
+           PERFORM                                                 
+           VARYING SUB-2 FROM 1 BY 1                             
+           UNTIL SUB-2 > SUB-1 - 1                               
+             IF TABL(SUB-1) = TABL(SUB-2)                         
+             THEN                                                 
+           PERFORM DUP-FOUND                               
+                 MOVE SUB-1 TO SUB-2                             
+             END-IF                                               
+            END-PERFORM                                             
+            END-PERFORM.                                                 
+                                                                 
+            GOBACK.       
+                                                         
+            DUP-FOUND.                                               
+                                                         
+             DISPLAY 'DUP VALUE ''' TABL(SUB-1).                   
+               
+          
