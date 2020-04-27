@@ -1,0 +1,30 @@
+      ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. FIBONACII.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       77 WS-A PIC 999 VALUE 1.
+       77 WS-B PIC S999 VALUE -1.
+       77 WS-C PIC 999.
+       77 WS-C1 PIC ZZ9.
+       77 WS-NUM PIC 99.
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+           MOVE 1 TO WS-A
+           MOVE -1 TO WS-B
+            DISPLAY "ENTER A NUMBER"
+            ACCEPT WS-NUM
+            DISPLAY WS-NUM
+            PERFORM DISP-PARA WS-NUM TIMES
+            STOP RUN.
+            DISP-PARA.
+            COMPUTE WS-C = WS-A + WS-B
+            MOVE WS-C TO WS-C1
+            DISPLAY WS-C1
+            MOVE WS-B TO WS-A
+            MOVE WS-C TO WS-B.
