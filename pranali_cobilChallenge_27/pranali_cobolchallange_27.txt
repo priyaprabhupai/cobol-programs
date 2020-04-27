@@ -1,0 +1,78 @@
+ ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+        IDENTIFICATION DIVISION.
+       PROGRAM-ID. SALES1.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 SALES.
+           05 NOSHIRT PIC 9(3) VALUE 10.
+           05 NOSAREE PIC 9(3) VALUE 5.
+           05 NOOTHER PIC 9(3) VALUE 10.
+       01 SHIRTPRICE PIC 9(3).
+       01 SAREEPRICE PIC 9(3).
+       01 OTHERPRICE PIC 9(3).
+       01 TOTALSHIRT PIC 9(3).
+       01 TOTALSAREE PIC 9(3).
+       01 TOTALOTHER PIC 9(3).
+       01 TOTAL PIC 9(3).
+       PROCEDURE DIVISION.
+            ACCEPT SHIRTPRICE.
+            ACCEPT SAREEPRICE.
+            ACCEPT OTHERPRICE.
+       MAIN-PROCEDURE.
+          
+            COMPUTE TOTALSHIRT=NOSHIRT * SHIRTPRICE
+            DISPLAY TOTALSHIRT      
+            COMPUTE TOTALSAREE=NOSAREE * SAREEPRICE
+            DISPLAY TOTALSAREE        
+            COMPUTE TOTALOTHER=NOOTHER * OTHERPRICE
+            DISPLAY TOTALOTHER
+            COMPUTE  TOTAL=TOTALSHIRT + TOTALSAREE + TOTALOTHER
+            DISPLAY TOTAL 
+            STOP RUN.
+       END PROGRAM SALES1.
+ ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+        IDENTIFICATION DIVISION.
+       PROGRAM-ID. SALES1.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 SALES.
+           05 NOSHIRT PIC 9(3) VALUE 10.
+           05 NOSAREE PIC 9(3) VALUE 5.
+           05 NOOTHER PIC 9(3) VALUE 10.
+       01 SHIRTPRICE PIC 9(3).
+       01 SAREEPRICE PIC 9(3).
+       01 OTHERPRICE PIC 9(3).
+       01 TOTALSHIRT PIC 9(3).
+       01 TOTALSAREE PIC 9(3).
+       01 TOTALOTHER PIC 9(3).
+       01 TOTAL PIC 9(3).
+       PROCEDURE DIVISION.
+            ACCEPT SHIRTPRICE.
+            ACCEPT SAREEPRICE.
+            ACCEPT OTHERPRICE.
+       MAIN-PROCEDURE.
+          
+            COMPUTE TOTALSHIRT=NOSHIRT * SHIRTPRICE
+            DISPLAY TOTALSHIRT      
+            COMPUTE TOTALSAREE=NOSAREE * SAREEPRICE
+            DISPLAY TOTALSAREE        
+            COMPUTE TOTALOTHER=NOOTHER * OTHERPRICE
+            DISPLAY TOTALOTHER
+            COMPUTE  TOTAL=TOTALSHIRT + TOTALSAREE + TOTALOTHER
+            DISPLAY TOTAL 
+            STOP RUN.
+       END PROGRAM SALES1.
+
+
