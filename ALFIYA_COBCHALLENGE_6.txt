@@ -1,0 +1,18 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID. HELLO-WORLD.
+DATA DIVISION.
+    WORKING-STORAGE SECTION.
+ 77 BIN-VAR PIC X(16).                                   
+  77 NUMER1 PIC 9(5).                                     
+  77 I      PIC 99.                                       
+  77 J      PIC 9.                                       
+PROCEDURE DIVISION.                                     
+MAIN-PARA.                                               
+     ACCEPT NUMER1.                                       
+     PERFORM VARYING I FROM 16 BY -1 UNTIL I < 1         
+       DIVIDE NUMER1 BY 2 GIVING NUMER1 REMAINDER J       
+       MOVE J TO BIN-VAR(I:1)                             
+     END-PERFORM.                                         
+     DISPLAY BIN-VAR.
+END-MAIN-PARA.
+STOP RUN.
