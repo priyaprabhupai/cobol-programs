@@ -1,0 +1,17 @@
+IDENTIFICATION DIVISION.
+       PROGRAM-ID. Compare+.
+       environment division.
+       DATA DIVISION.
+       FILE SECTION.
+       working-storage section.
+       01 ws-string1       pic x(40) VALUE "carrots are orange and orange is orange".
+       01 ws-string2       pic x(42) VALUE "carrots are orange and oranges are orange".
+       procedure division.
+      	 IF string1 IS EQUAL TO string2
+         THEN
+	    DISPLAY "String: " ws-string1
+	 ELSE
+    	    DISPLAY "Output: s are orange"
+	 END-IF
+           stop run.
+       END PROGRAM Compare.
