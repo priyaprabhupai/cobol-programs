@@ -1,0 +1,37 @@
+ ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. STRPALINDROME.
+       ENVIRONMENT DIVISION.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 WS-STR       PIC A(07) VALUE SPACES.
+       01 WS-STR1      PIC A(07) VALUE SPACES.
+       01 WS-STR2      PIC A(07) VALUE SPACES.
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+           PERFORM ACCEPT-PARA.
+           PERFORM PROCESS-PARA.
+           PERFORM DISPLAY-PARA.
+           STOP RUN.
+       ACCEPT-PARA.
+           DISPLAY 'ENTER THE STRING TO CHECK PALINDROME OR NOT: '
+           ACCEPT WS-STR
+           MOVE WS-STR TO WS-STR1
+           DISPLAY 'THE GIVEN STRING: ' WS-STR1.
+       PROCESS-PARA.
+           MOVE FUNCTION REVERSE(WS-STR) TO WS-STR2
+           DISPLAY 'THE REVERSE STRING: ' WS-STR2.
+       DISPLAY-PARA.
+           IF WS-STR1 EQUALS WS-STR2
+               DISPLAY 'GIVEN STRING IS A PALINDROME'
+           ELSE
+               DISPLAY 'GIVEN STRING IS NOT A PALINDROME'
+           END-IF.    
+       END PROGRAM STRPALINDROME.
+
