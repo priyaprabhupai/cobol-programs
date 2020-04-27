@@ -1,0 +1,34 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID. BUBBLESORT.
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+           77 ARR OCCURS 5 TIMES PIC S9(2).
+           77 TEMP PIC 999 VALUE 000.
+           77 I PIC 9 VALUE 0.
+           77 J PIC 9 VALUE 1.
+       PROCEDURE DIVISION.
+       
+           DISPLAY "ENTER ANY FIVE NUMBERS:"
+           PERFORM UNTIL I = 5
+           ADD 1 TO I  
+           ACCEPT ARR(I)
+           END-PERFORM.
+           MOVE 1 TO I.
+           PERFORM UNTIL I > 5
+           MOVE I TO J
+           PERFORM UNTIL J > 5 
+             IF (ARR(I) > ARR(J))
+               MOVE ARR(I) TO TEMP
+               MOVE ARR(J) TO ARR(I)
+               MOVE TEMP TO ARR(J)
+             END-IF
+           ADD 1 TO J GIVING J
+           END-PERFORM
+           ADD 1 TO I GIVING I
+           END-PERFORM.
+           MOVE 0 TO I.
+           PERFORM UNTIL I = 5
+           ADD 1 TO I  
+           DISPLAY  I "=" ARR(I)
+           END-PERFORM.
+ STOP RUN.
