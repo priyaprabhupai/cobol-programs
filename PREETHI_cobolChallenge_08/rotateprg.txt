@@ -1,0 +1,42 @@
+ ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. ROTATE.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+           01 WS-TABLE.
+             05 WS-ELEMENT PIC 9(1) OCCURS 5 TIMES INDEXED BY IND.
+           01 WS-TABLE1.
+             05 WS-ELEMENT1 PIC 9(1) OCCURS 5 TIMES INDEXED BY IND.
+           01 I PIC 9.
+           01 N PIC 9.
+       PROCEDURE DIVISION.
+           MOVE 3 TO WS-ELEMENT(1)
+           MOVE 6 TO WS-ELEMENT(2)
+           MOVE 2 TO WS-ELEMENT(3)
+           MOVE 7 TO WS-ELEMENT(4)
+           MOVE 4 TO WS-ELEMENT(5)
+           ACCEPT N
+           IF N<5 THEN
+               PERFORM A-PARA N TIMES
+               ELSE
+                   DISPLAY 'INVALID N'
+           END-IF.
+       A-PARA.
+           MOVE WS-ELEMENT(1) TO WS-ELEMENT1(5)
+           MOVE WS-ELEMENT(2) TO WS-ELEMENT1(1)
+           MOVE WS-ELEMENT(3) TO WS-ELEMENT1(2)
+           MOVE WS-ELEMENT(4) TO WS-ELEMENT1(3)
+           MOVE WS-ELEMENT(5) TO WS-ELEMENT1(4)
+           MOVE WS-ELEMENT1(1) TO WS-ELEMENT(1)
+           MOVE WS-ELEMENT1(2) TO WS-ELEMENT(2)
+           MOVE WS-ELEMENT1(3) TO WS-ELEMENT(3)
+           MOVE WS-ELEMENT1(4) TO WS-ELEMENT(4)
+           MOVE WS-ELEMENT1(5) TO WS-ELEMENT(5)
+           DISPLAY WS-TABLE1.
+       END PROGRAM ROTATE.
