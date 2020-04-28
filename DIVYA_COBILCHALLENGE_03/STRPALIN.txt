@@ -1,0 +1,96 @@
+ * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. YOUR-PROGRAM-NAME.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 WS-STR         PIC X(500).
+       01 WS-STR-BY
+           REDEFINES WS-STR  OCCURS 500 PIC X.
+       01 WS-STR-LEN     PIC 9(3).
+       01 WS-STR3        PIC X(3).
+       01 WS-STR5        PIC X(5). 
+       01 WS-STR7        PIC X(7).
+       01 WS-STR9        PIC X(9).
+       01 WS-STR11        PIC X(11).
+       01 WS-STR13        PIC X(13).
+       01 WS-STR15        PIC X(15).
+       01 WS-STR17        PIC X(17).
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+           PERFORM ACCEPT-PARA.
+           PERFORM PROCESS-PARA.
+           STOP RUN.
+       ACCEPT-PARA.    
+            DISPLAY "ENTER THE TO PERFORM PALINDROME OR NOT"
+            ACCEPT WS-STR
+            IF WS-STR EQUAL TO SPACE
+                MOVE ZERO TO WS-STR-LEN
+            ELSE
+                MOVE LENGTH OF WS-STR TO WS-STR-LEN
+                PERFORM UNTIL WS-STR-BY(WS-STR-LEN)
+                      NOT EQUAL TO SPACE
+                         SUBTRACT +1 FROM WS-STR-LEN
+                END-PERFORM
+            END-IF                              
+            DISPLAY WS-STR-LEN 'LENGTH OF THE STRING'.
+       PROCESS-PARA.
+           DISPLAY 'LENGTH OF THE STRING:'  WS-STR-LEN
+           EVALUATE WS-STR-LEN
+           WHEN 003
+             MOVE WS-STR TO WS-STR3
+             IF WS-STR3 = FUNCTION REVERSE(WS-STR3)
+                 DISPLAY ' 3 GIVEN STRING IS A PALINDROME'
+             ELSE
+                 DISPLAY '3 GIVEN STRING IS NOT A PALINDROME'
+           WHEN 005
+             MOVE WS-STR TO WS-STR5           
+             IF WS-STR5 = FUNCTION REVERSE(WS-STR5)
+                 DISPLAY '5 GIVEN STRING IS A PALINDROME'
+             ELSE
+                 DISPLAY '5 GIVEN STRING IS NOT A PALINDROME'
+           WHEN 007
+           MOVE WS-STR TO WS-STR7 
+             IF WS-STR7 = FUNCTION REVERSE(WS-STR7)
+                 DISPLAY '7 GIVEN STRING IS A PALINDROME'
+             ELSE
+                 DISPLAY '7 GIVEN STRING IS NOT A PALINDROME'
+           WHEN 009
+           MOVE WS-STR TO WS-STR9 
+             IF WS-STR9 = FUNCTION REVERSE(WS-STR9)
+                 DISPLAY '9 GIVEN STRING IS A PALINDROME'
+             ELSE
+                 DISPLAY '9 GIVEN STRING IS NOT A PALINDROME'
+           WHEN 011
+           MOVE WS-STR TO WS-STR11
+             IF WS-STR11 = FUNCTION REVERSE(WS-STR11)
+                 DISPLAY '11 GIVEN STRING IS A PALINDROME'
+             ELSE
+                 DISPLAY '11 GIVEN STRING IS NOT A PALINDROME'
+           WHEN 013
+           MOVE WS-STR TO WS-STR13
+             IF WS-STR13 = FUNCTION REVERSE(WS-STR13)
+                 DISPLAY '13 GIVEN STRING IS A PALINDROME'
+             ELSE
+                 DISPLAY '13 GIVEN STRING IS NOT A PALINDROME'
+           WHEN 015
+           MOVE WS-STR TO WS-STR15 
+             IF WS-STR15 = FUNCTION REVERSE(WS-STR15)
+                 DISPLAY '15 GIVEN STRING IS A PALINDROME'
+             ELSE
+                 DISPLAY '15 GIVEN STRING IS NOT A PALINDROME'
+           WHEN 017
+           MOVE WS-STR TO WS-STR17 
+             IF WS-STR17 = FUNCTION REVERSE(WS-STR17)
+                 DISPLAY '17 GIVEN STRING IS A PALINDROME'
+             ELSE
+                 DISPLAY '17 GIVEN STRING IS NOT A PALINDROME'
+           WHEN OTHER 
+               DISPLAY 'NOT A PALINDROME'          
+           END-EVALUATE.
+       END PROGRAM YOUR-PROGRAM-NAME.
+
