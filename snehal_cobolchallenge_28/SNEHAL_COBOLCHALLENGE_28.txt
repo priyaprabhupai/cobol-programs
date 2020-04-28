@@ -1,4 +1,4 @@
-******************************************************************
+      ******************************************************************
       * Author:
       * Date:
       * Purpose:
@@ -12,19 +12,23 @@
        01 WS-TEXT.
            05 WS-ARR OCCURS 5 TIMES PIC 99.
        01 WS-DIF  PIC 99.
-         
+       01 WS-OUTPUT PIC 99 VALUE ZERO.
        01 WS-I PIC 99.
-       01 WS-J PIC 99.
+       01 WS-J PIC 99 VALUE 2.
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
-           PERFORM VARYING WS-I FROM 1 BY 1 UNTIL WS-I  > 5
-           ACCEPT WS-ARR(WS-I)
-            PERFORM VARYING WS-J FROM 1 BY 1 UNTIL WS-J > 5
-            COMPUTE WS-DIF = WS-ARR(WS-I) - WS-ARR(WS-J)
-            DISPLAY WS-DIF
-            END-PERFORM 
-            
-           END-PERFORM 
-           
+           PERFORM VARYING WS-I FROM 1 BY 1 UNTIL WS-I > 5 
+               ACCEPT WS-ARR(WS-I)
+            END-PERFORM
+           PERFORM VARYING WS-I FROM 1 BY 1 UNTIL WS-I  > 4
+
+            COMPUTE WS-DIF =  WS-ARR(WS-I) - WS-ARR(WS-J)
+            IF ( WS-DIF > WS-OUTPUT) THEN
+                MOVE WS-DIF TO WS-OUTPUT
+            END-IF
+            ADD 1 TO WS-J
+            END-PERFORM
+     
+           DISPLAY WS-OUTPUT
             STOP RUN.
        END PROGRAM COB1.
