@@ -1,0 +1,29 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. pswd.
+       environment division.
+       DATA DIVISION.
+       FILE SECTION.
+       working-storage section.
+       01 ws-pswrd pic x(9).
+       01 frst pic x(1).
+       procedure division.
+       accept ws-pswrd
+       frst=fuction upper_case(1)
+       if length(ws-pswrd)  Greater than or equal 8
+       then
+       display 'week pswrd,try entering more than 8 characters'
+       if ws-pswrd(1) not equal to frst
+       then
+       display 'week pswrd,the first letter must be capital'
+       if ws-pswrd(9) not equal to @ and $ and #
+       then 
+       display 'week pswrd,the last character must be a national one       ($,#,@)
+       else
+       display 'strong password'.
+       end-if.
+
+         
+
+       
+       
+       
