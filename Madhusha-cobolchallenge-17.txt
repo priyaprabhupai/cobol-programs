@@ -1,0 +1,47 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. StrRecord.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT STRREC
+        ASSIGN TO 'C:\Users\User\Pictures\madhusha26may’'
+           ORGANISATION IS SEQUENTIAL
+            FILE STATUS IS WS-STAT.
+       DATA DIVISION.
+       FILE SECTION.
+       FD STRREC.
+       01 STR-REC.
+           05 FILEREC PIC X(60).
+       WORKING-STORAGE SECTION.
+        01 WS-LEN PIC 99.
+        01 WS-I PIC 999.
+             77 WS-STAT PIC 99.
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+           OPEN INPUT STRREC
+           IF WS-STAT = '00' THEN
+               PERFORM READ-PARA THRU READ-EXIT
+               PERFORM CLOSE-PARA
+           END-IF
+            STOP RUN.
+       READ-PARA.
+           PERFORM UNTIL WS-STAT NOT = 00
+           READ STRREC
+           END-READ
+           IF (WS-STAT NOT = 10) THEN
+           PERFORM PROCEDURE-PARA
+           END-IF
+           END-PERFORM.
+       READ-EXIT.
+           EXIT.
+       PROCEDURE-PARA.
+         MOVE FUNCTION STORED-CHAR-LENGTH(FILEREC) TO WS-LEN
+         PERFORM VARYING WS-I FROM 1 BY 1 UNTIL WS-I  > WS-LEN 
+         IF (FILEREC(WS-I:4) = "LIME" )THEN
+            MOVE "WAIT" TO FILEREC(WS-I:4)
+            ADD 4 TO WS-I
+         END-IF
+         END-PERFORM.
+          CLOSE-PARA.
+           CLOSE STRREC.
+       END PROGRAM StrRecord.
