@@ -1,0 +1,30 @@
+IDENTIFICATION DIVISION.
+        PROGRAM-ID. arrsum.
+        ENVIRONMENT DIVISION.
+        DATA DIVISION.
+        WORKING-STORAGE SECTION.
+       01 ws-rem pic 9(2).
+       01 ws-sum pic 9(2).
+       01 ws-div  pic 9(2) value 10.
+       01 ws-q  pic 9.
+        01 WS-TABLE.
+         05 ws-a pic 9(2) occurs 5 times indexed by i.
+       PROCEDURE DIVISION.
+        accept  ws-a(1).
+        accept  ws-a(2).
+        accept  ws-a(3).
+        accept  ws-a(4).
+        accept  ws-a(5).
+       set i to 1
+       display "array elements "
+       perform para-1 5 times.
+       display "sum of Numbers" ws-sum
+       
+       stop run.
+       para-1.
+         display ws-a(i)
+        divide ws-div into ws-a(i)  giving ws-q remainder ws-rem
+       if (ws-rem = 2 or ws-rem = 5)
+        compute ws-sum = ws-sum + ws-a(i)
+       end-if
+    set i up by 1.
