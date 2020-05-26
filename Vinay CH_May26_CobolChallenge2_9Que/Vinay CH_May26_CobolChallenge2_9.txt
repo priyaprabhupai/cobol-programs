@@ -1,0 +1,33 @@
+9. Accept elements into a table of 10 elements. Find the 3rd largest element in the table
+
+       IDENTIFICATION DIVISION.                                        
+       PROGRAM-ID. COB009.                                              
+       ENVIRONMENT DIVISION.                                            
+       DATA DIVISION.                                                   
+       WORKING-STORAGE SECTION.
+                                         
+       77 WS-LAR PIC 9(2). 
+       77 WS-SLAR PIC 9(2). 
+       77 WS-TLAR PIC 9(2). 
+       01 WS-NUMS VALUE 05203040506010203470.                                                   
+           05 WS-NUM PIC 9(2) OCCURS 10 TIMES INDEXED BY I.                                               
+                                                       
+       
+                                         
+       PROCEDURE DIVISION.                                            
+       MAIN-PARA.
+           SET I TO 1.        
+           MOVE WS-NUM(I) TO WS-LAR
+           PERFORM A100-PARA 10 TIMES.
+           DISPLAY 'LARGEST NO IN ARRAY IS        ' WS-LAR
+           DISPLAY 'SECOND LARGEST NO IN ARRAY IS ' WS-SLAR
+           DISPLAY 'THIRD NO IN ARRAY IS          ' WS-TLAR
+           STOP RUN.                                                    
+       A100-PARA.  
+           IF(WS-LAR < WS-NUM(I))
+               MOVE WS-SLAR TO WS-TLAR
+             MOVE WS-LAR TO WS-SLAR
+             MOVE WS-NUM(I) TO WS-LAR
+           END-IF
+           SET I UP BY 1.
+               
