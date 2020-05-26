@@ -1,0 +1,85 @@
+      ******************************************************************
+
+      * Author:
+
+      * Date:
+
+      * Purpose:
+
+      * Tectonics: cobc
+
+      ******************************************************************
+
+       IDENTIFICATION DIVISION.
+
+       PROGRAM-ID. PrimeProduct.
+
+       DATA DIVISION.
+
+       FILE SECTION.
+
+       WORKING-STORAGE SECTION.
+
+       01 WS-NUM PIC 9(5).
+
+       01 WS-OUTPUT PIC 9(5) VALUE 1.
+
+       01 WS-X PIC 99.
+
+       01 WS-I PIC 99.
+
+       01 WS-J PIC 9.
+
+       01 WS-EX PIC 99.
+
+       01 WS-REMAIN PIC 9.
+
+       01 WS-A PIC 9(5).
+
+       01 WS-CHECK PIC 9 VALUE 1.
+
+       PROCEDURE DIVISION.
+
+       MAIN-PROCEDURE.
+
+           ACCEPT WS-NUM
+
+           IF ( WS-NUM >99999) THEN
+
+               DISPLAY "INVALID INPUT"
+
+           ELSE
+
+               PERFORM PROCEDURE-PARA
+
+           END-IF
+
+            DISPLAY WS-OUTPUT
+
+            STOP RUN.
+
+       PROCEDURE-PARA.
+
+              PERFORM VARYING WS-I FROM 1 BY 1 UNTIL WS-I >5
+
+              MOVE WS-NUM(WS-I:1) TO WS-X
+
+                 PERFORM VARYING WS-J FROM 2 BY 1 UNTIL WS-J = WS-X
+
+                   DIVIDE WS-J BY WS-X GIVING WS-EX REMAINDER
+
+                   WS-REMAIN
+
+                   IF (WS-REMAIN > 0 ) THEN
+
+                       MOVE WS-OUTPUT TO WS-A
+
+                       COMPUTE WS-OUTPUT =  WS-X * WS-A
+
+                    END-IF
+
+                 END-PERFORM
+
+              END-PERFORM.
+
+       END PROGRAM PrimeProduct.
