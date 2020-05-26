@@ -1,0 +1,67 @@
+ IDENTIFICATION DIVISION.
+       PROGRAM-ID. REVERSESTRING.
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT STDFILE
+           ASSIGN TO 'C:\Users\User\Desktop\Cobol\Input.txt'
+           ORGANISATION IS LINE SEQUENTIAL
+           FILE STATUS IS WS-STAT.
+           SELECT OUTFILE
+           ASSIGN TO 'C:\Users\User\Desktop\Cobol\Output.txt'
+           FILE STATUS IS WS-OUT-STAT.
+       DATA DIVISION.
+       FILE SECTION.
+       FD STDFILE.
+       01 STD-REC.
+             05 WS-TEXT PIC  X(10).
+       FD OUTFILE.
+       01 OUT-REC.
+             05 WS-OUT-TEXT PIC X(10).
+       WORKING-STORAGE SECTION.
+       01 WORTTXT1 PIC X(50) VALUE SPACES.
+       01 WS-STOP         PIC X(01) VALUE 'N'.
+       01 B PIC X(50) VALUE SPACES.
+       01 LOO PIC 9(2) VALUE 0.
+       01 LOP PIC 9(2) VALUE 0.
+       77 WS-STAT PIC 99.
+       77 WS-OUT-STAT PIC 99.
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+           PERFORM 1000-PARA1
+           THRU    1999-PARA1-EXIT.
+           PERFORM 2000-PARA2
+           THRU    2999-PARA2-EXIT UNTIL WS-STOP='Y'.
+           PERFORM 3000-PARA3
+           THRU    3999-PARA3-EXIT.
+           STOP RUN.
+       1000-PARA1.
+           OPEN INPUT STDFILE
+           OPEN OUTPUT OUTFILE
+               IF (WS-STAT NOT = 00 )
+                  DISPLAY 'OPEN STDFILE ERROR'.
+               IF (WS-OUT-STAT NOT = 00)
+                   DISPLAY 'OPEN OUTFILE ERROR'.
+       1999-PARA1-EXIT.
+                      EXIT.
+       2000-PARA2.
+           READ STDFILE AT END MOVE 'Y' TO WS-STOP
+           GO TO 2999-PARA2-EXIT.
+               MOVE 50 TO LOO.
+               MOVE 1 TO LOP.
+               MOVE WS-TEXT TO WORTTXT1
+               PERFORM 50 TIMES
+               MOVE WORTTXT1(LOP:1) TO B(LOO:1)
+               SUBTRACT 1 FROM LOO
+               ADD 1 TO LOP
+               END-PERFORM.
+               MOVE B TO WS-OUT-TEXT.
+               WRITE STD-REC.
+       2999-PARA2-EXIT.
+                      EXIT.
+       3000-PARA3.
+            CLOSE STDFILE OUTFILE.
+       3999-PARA3-EXIT.
+                      EXIT.
+       End PROGRAM REVERSESTRING.
+       
