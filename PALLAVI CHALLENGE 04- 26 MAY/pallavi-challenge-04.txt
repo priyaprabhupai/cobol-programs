@@ -1,0 +1,33 @@
+IDENTIFICATION DIVISION.
+PROGRAM-ID. HELLO-WORLD.
+DATA DIVISION.
+    WORKING-STORAGE SECTION.
+       77 WS-A PIC 999.
+       77 WS-B PIC 999.
+       77 WS-C PIC 999.
+       77 WS-C1 PIC 99.
+       77 WS-NUM PIC 99.
+       77 ws-r pic 99.
+       77 q pic 99.
+       PROCEDURE DIVISION.
+           MOVE 0 TO WS-A
+           MOVE 1 TO WS-B
+            DISPLAY "ENTER A NUMBER"
+            ACCEPT WS-NUM
+            DISPLAY WS-NUM
+            DIVIDE WS-NUM  BY 2 GIVING  Q  REMAINDER WS-R
+            IF ws-r equal zero
+              DISPLAY " EVEN NUMBER"
+               PERFORM  UNTIL WS-C1  > WS-NUM
+                COMPUTE WS-C = WS-A + WS-B
+                MOVE WS-C TO WS-C1
+                IF WS-C1 <= WS-NUM
+                DISPLAY WS-C1
+                END-IF
+                MOVE WS-B TO WS-A
+                MOVE WS-C TO WS-B
+               END-PERFORM
+            ELSE 
+              DISPLAY "ODD NUM, PLEASE ENTER EVEN NUMBER"
+            END-IF
+            STOP RUN.
