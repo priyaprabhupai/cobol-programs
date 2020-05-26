@@ -1,0 +1,21 @@
+      ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. HELLO-WORLD.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+        77 X PIC 9(4).
+        77 Y PIC 9999v9.
+        77 Z PIC 9(6).
+        77 a pic 9(4)V99.
+       PROCEDURE DIVISION.
+       accept x
+       compute y = x/2
+       compute z= ( 10 + (x - 1) * 5)
+       compute a= (z* y)/x
+       display a
+       STOP RUN.
