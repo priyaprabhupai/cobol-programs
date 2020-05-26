@@ -1,0 +1,34 @@
+******************************************************************************************
+           COBOL PROGRAM FOR CRICKETER'S ID AND SCORE
+
+******************************************************************************************
+
+
+
+IDENTIFICATION DIVISION.
+       PROGRAM-ID. YOUR-PROGRAM-NAME.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01 WS-ASCORE PIC 99.
+       01 WS-DATA.
+         02 WS-ISCORE VALUES 010203040506070809101110203040506070809012
+         12.
+            05 WS-I OCCURS 11 TIMES INDEXED BY I.
+               10 WS-I1 PIC 99. 
+            05 WS-SCORE OCCURS 11 TIMES INDEXED BY J.
+               10 WS-SCORE1 PIC 99.
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+        DISPLAY 'ENTER THE SCORE'
+        ACCEPT WS-ASCORE.
+        SET J TO 1
+        DISPLAY 'LIST OF PLAYER ID WHOSE SCORE MORE THAN ' WS-ASCORE
+        PERFORM PARA-1 11 TIMES
+       STOP RUN.
+       PARA-1.
+       IF(WS-ASCORE < WS-SCORE(J)) THEN
+           DISPLAY WS-I(J)
+       END-IF
+       SET J UP BY 1.
+       
